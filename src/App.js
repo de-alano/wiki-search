@@ -6,23 +6,8 @@ import ResultList from './components/ResultList/ResultList';
 
 const App = () => {
     const [phrase, setPhrase] = useState('react');
+    const [debouncedPhrase, setDebouncedPhrase] = useState(phrase);
     const [results, setResults] = useState([]);
-
-    useEffect(() => {
-        if (phrase) {
-            search();
-        }
-    }, [phrase]);
-
-    const onSearchChange = e => {
-        e.preventDefault();
-        setPhrase(e.target.value)
-    };
-
-    const onSearchSubmit = e => {
-        e.preventDefault();
-        search();
-    };
 
     const search = async () => {
         const { data } = await axios.get('https://pl.wikipedia.org/w/api.php', {
@@ -37,6 +22,34 @@ const App = () => {
         });
         setResults(data.query.search)
     };
+
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            setDebouncedPhrase(phrase);
+        }, 750);
+
+        return () => {
+            clearTimeout(timerId);
+        }
+    }, [phrase]);
+
+    useEffect(() => {
+        if (debouncedPhrase) {
+            search();
+        }
+    }, [debouncedPhrase]);
+
+
+    const onSearchChange = e => {
+        e.preventDefault();
+        setPhrase(e.target.value)
+    };
+
+    const onSearchSubmit = e => {
+        e.preventDefault();
+        search();
+    };
+
 
     return (
         <div className="App">
