@@ -21,7 +21,7 @@ Implement a code that will look for the top 10 results in the Wikipedia API (sam
 
 - In your terminal, cd into the directory you just created
 
-    `cd your-weather/`
+    `cd wiki-search/`
 
 - Install all dependencies
 
