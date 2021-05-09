@@ -23,14 +23,14 @@ const Replace = ({
                 <button
                     onClick={onSingleReplace}
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-secondary single-replace-btn"
                 >
                     Replace
                 </button>
                 <button
                     onClick={onMultipleReplace}
                     type="button"
-                    className="btn btn-dark"
+                    className="btn btn-dark multiple-replace-btn"
                 >
                     Replace All
                 </button>

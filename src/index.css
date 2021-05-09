@@ -7,3 +7,18 @@
     background-color: lightblue;
     font-weight: bold;
 }
+
+.single-replace-btn {
+    margin-right: 10px;
+}
+
+@media (max-width: 992px) {
+    .App {
+        max-width: 80%;
+    }
+}
+@media (max-width: 576px) {
+    .App {
+        max-width: 95%;
+    }
+}
